@@ -163,7 +163,7 @@ function App() {
             component={Main}
             onEditAvatar={handleEditAvatarClick}
             onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
+            onNewLocation={handleAddPlaceClick}
             onCardClick={handleCardClick}
             onCardDelete={handleCardDelete}
             onCardLike={handleCardLike}
