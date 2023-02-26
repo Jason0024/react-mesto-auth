@@ -13,12 +13,14 @@ function Register (props) {
   function handleSubmitButton (event) {
     event.preventDefault();
     props.handleRegister(password, email);
-    setPassword('');
-    setEmail('');
   }
 
+  React.useEffect(() => {
+    setPassword('');
+    setEmail('');
+}, []);
+
   return (
-    <>
       <div className="auth">
         <h3 className="auth__title-form">Регистрация</h3>
         <form className="auth__form" onSubmit={ handleSubmitButton }>
@@ -39,7 +41,6 @@ function Register (props) {
           < Link to="sign-in" className="auth__link">Войти</Link>
         </div>
       </div>
-    </>
   )
 }
 

@@ -3,15 +3,16 @@ class AuthApi {
     this._authUrl = authUrl;
   }
   // Метод обработки ответа сервера
-  _processingServerResponse (res) {
+  _parseResponse (res) {
     if (res.ok) {
       return res.json();
     } else {
       return Promise.reject(`код ошибки: ${res.status}`);
     }
   }
+  
   // Метод верификации токена
-  tokenVerification (token) {
+  verifyToken (token) {
     return fetch(`${this._authUrl}users/me`, {
       // По умолчанию fetch — это GET, можно не указывать
       headers: {
@@ -19,7 +20,7 @@ class AuthApi {
         "Authorization" : `Bearer ${token}`
       }
     })
-      .then(this._processingServerResponse)
+      .then(this._parseResponse)
   }
   // Метод авторизации пользователя
   userAuthorization (password, email) {
@@ -30,7 +31,7 @@ class AuthApi {
       },
       body: JSON.stringify({ password, email })
     })
-      .then(this._processingServerResponse)
+      .then(this._parseResponse)
   }
   // Метод регистрации пользователя
   userRegistration (password, email) {
@@ -41,7 +42,7 @@ class AuthApi {
       },
       body: JSON.stringify({ password, email })
     })
-      .then(this._processingServerResponse)
+      .then(this._parseResponse)
   }
 }
 

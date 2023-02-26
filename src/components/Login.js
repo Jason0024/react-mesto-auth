@@ -11,12 +11,14 @@ function Login (props) {
   function handleSubmitButton (event) {
     event.preventDefault();
     props.handleLogin(password, email);
-    setPassword('');
-    setEmail('');
   }
 
+  React.useEffect(() => {
+    setPassword('');
+    setEmail('');
+}, []);
+
   return (
-    <>
       <div className="auth">
         <h3 className="auth__title-form">Вход</h3>
         <form className="auth__form" onSubmit={ handleSubmitButton }>
@@ -33,7 +35,6 @@ function Login (props) {
           <button type="submit" className="auth__button" aria-label="Войти">Войти</button>
         </form>
       </div>
-    </>
   )
 }
 

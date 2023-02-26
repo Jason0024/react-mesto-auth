@@ -56,7 +56,7 @@ function App() {
   useEffect(() => {
     const userToken = localStorage.getItem('token')
     if (userToken) {
-      apiAuth.tokenVerification(userToken)
+      apiAuth.verifyToken(userToken)
         .then((res) => { setEmail(res.data.email); setIsLoggedIn(true); history.push('/') })
         .catch((err) => { console.log(`Возникла ошибка верификации токена, ${err}`) })
     }
